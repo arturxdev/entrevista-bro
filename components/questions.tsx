@@ -54,6 +54,11 @@ export function QuestionsSection() {
   const [newQuestionOrientation, setNewQuestionOrientation] =
     useState<QuestionOrientation>("backend");
 
+  function truncateText(text: string, maxLength = 100) {
+    if (!text) return "";
+    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+  }
+
   const handleVote = async (questionId: string, direction: "up" | "down") => {
     if (!user) {
       alert("Debes iniciar sesión para votar");
@@ -445,7 +450,7 @@ export function QuestionsSection() {
                           {question.title}
                         </h3>
                         <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
-                          {question.description}
+                          {truncateText(question.description)}
                         </p>
                       </div>
                       <div className="flex items-center gap-2 ">
@@ -521,7 +526,7 @@ export function QuestionsSection() {
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground whitespace-pre-line">
                 {selectedQuestion?.description}
               </p>
             </div>
