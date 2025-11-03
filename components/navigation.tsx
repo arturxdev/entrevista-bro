@@ -28,10 +28,10 @@ export function Navigation() {
 
           {/* Right side: Navigation links and Login button */}
           <div className="flex items-center gap-8">
-            <Link href="/">Entrevista</Link>
-            <Link href="/preguntas">Preguntas</Link>
-            <Link href="/https://insigh.to/b/mikui" target="_blank_">
-              Sugieres cambio?
+            <Link href="/">🧠 Entrevista</Link>
+            <Link href="/preguntas">💬 Preguntas</Link>
+            <Link href="https://insigh.to/b/mikui" target="_blank_">
+              🛠️ Proponer mejora
             </Link>
             <SignedOut>
               <SignInButton>
