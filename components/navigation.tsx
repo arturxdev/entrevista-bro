@@ -3,6 +3,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -21,34 +28,19 @@ export function Navigation() {
 
           {/* Right side: Navigation links and Login button */}
           <div className="flex items-center gap-8">
-            <Link
-              href="/"
-              className={cn(
-                "text-sm font-medium transition-colors",
-                pathname === "/"
-                  ? "text-secondary-foreground"
-                  : "text-gray-600 hover:text-black"
-              )}
-            >
-              Entrevista
+            <Link href="/">Entrevista</Link>
+            <Link href="/preguntas">Preguntas</Link>
+            <Link href="/https://insigh.to/b/mikui" target="_blank_">
+              Sugieres cambio?
             </Link>
-            <Link
-              href="/preguntas"
-              className={cn(
-                "text-sm font-medium transition-colors",
-                pathname === "/preguntas"
-                  ? "text-secondary-foreground"
-                  : "text-gray-600 hover:text-black"
-              )}
-            >
-              Preguntas
-            </Link>
-            <Button
-              variant="ghost"
-              className="text-sm font-medium text-secondary-foreground"
-            >
-              Iniciar sesión
-            </Button>
+            <SignedOut>
+              <SignInButton>
+                <Button>Iniciar sesion</Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </div>
       </div>
